@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138c46d6e3f7a8147b0858136645dfd0, type: 3}
+  m_Name: CookieStock
+  m_EditorClassIdentifier: 
+  type: 3
+  Name: Cookie Stock
+  description: Contains like 10 pieces of cookie
+  prefab: {fileID: 4080294292633153750, guid: b48979ea5adb1f54ea274235ffa80a52, type: 3}
+  price: 40

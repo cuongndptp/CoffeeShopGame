@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b070a3733d9ea74caada51ae142045f, type: 3}
+  m_Name: FullFlavorCheeseCake
+  m_EditorClassIdentifier: 
+  serveTime: 30
+  dishName: Full Flavor Cheese Cake
+  eatingTime: 30
+  price: 40
+  prefab: {fileID: 1011787261335839510, guid: aad69ee721802a049bbffc0d3e5f8127, type: 3}
+  recipe: {fileID: 11400000, guid: ece47d17a89e3874b80668335888bea9, type: 2}
+  icon: {fileID: 2800000, guid: 64b07e90ecff6dc48865e66b50358736, type: 3}

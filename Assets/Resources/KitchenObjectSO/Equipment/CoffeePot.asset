@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138c46d6e3f7a8147b0858136645dfd0, type: 3}
+  m_Name: CoffeePot
+  m_EditorClassIdentifier: 
+  type: 2
+  Name: Coffee Pot
+  Description: Watch out for hot coffee!
+  prefab: {fileID: 1519058375972653719, guid: 0c45868e1216f2640a59581502145f3e, type: 3}

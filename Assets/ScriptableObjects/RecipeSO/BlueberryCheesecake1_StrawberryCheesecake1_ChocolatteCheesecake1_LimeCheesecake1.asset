@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89d0a6065e6771b49b0d29ecaf975476, type: 3}
+  m_Name: BlueberryCheesecake1_StrawberryCheesecake1_ChocolatteCheesecake1_LimeCheesecake1
+  m_EditorClassIdentifier: 
+  recipeIngredients:
+  - inputKitchenObject: {fileID: 11400000, guid: 65d319d4c2cfeb24292b5c332bde179e,
+      type: 2}
+    quantity: 1
+  - inputKitchenObject: {fileID: 11400000, guid: 3ad6b10be601d1743b6a0fd443dbcbeb,
+      type: 2}
+    quantity: 1
+  - inputKitchenObject: {fileID: 11400000, guid: 25ecc74a8645ecd419cdba3559c5d9c4,
+      type: 2}
+    quantity: 1
+  - inputKitchenObject: {fileID: 11400000, guid: 1bdc7135aba7f054f8611e90e07c798e,
+      type: 2}
+    quantity: 1
+  processTime: 0
+  outputDish: {fileID: 11400000, guid: a1666b91bae9bcd459bec02791e7760b, type: 2}
