@@ -17,3 +17,4 @@ MonoBehaviour:
   description: Contains like 10 pieces of lime pies
   prefab: {fileID: 4080294292633153750, guid: 24c594212c9494b49ac74cec439856ac, type: 3}
   price: 70
+  icon: {fileID: 2800000, guid: fd4504feecd2d81489e426b657d440c3, type: 3}

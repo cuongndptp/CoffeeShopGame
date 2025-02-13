@@ -44,6 +44,7 @@ public class ShopUI : MonoBehaviour
         {
             ShopManager.Instance.TryBuyObject(kitchenObjectSO);
         });
+        shopItemTransform.Find("ItemImage").GetComponent<RawImage>().texture = kitchenObjectSO.icon;
 
 
 

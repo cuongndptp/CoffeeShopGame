@@ -13,7 +13,7 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnPlayerPrimary;
     public event EventHandler OnPlayerInteractAlternative;
     public event EventHandler OnPlayerThrow;
-
+    public event EventHandler OnPlayerOpenRecipe;
     //Singleton
     public static GameInput Instance;
     private void Start()
@@ -31,8 +31,13 @@ public class GameInput : MonoBehaviour
         inputActionsMap.Player.Primary.performed += Primary_performed;
         inputActionsMap.Player.InteractAlternative.performed += InteractAlternative_performed;
         inputActionsMap.Player.Throw.performed += Throw_performed;
-
+        inputActionsMap.Player.OpenRecipe.performed += OpenRecipe_performed;
         LockCursor();
+    }
+
+    private void OpenRecipe_performed(InputAction.CallbackContext obj)
+    {
+        OnPlayerOpenRecipe?.Invoke(this, EventArgs.Empty);
     }
 
     private void Throw_performed(InputAction.CallbackContext obj)

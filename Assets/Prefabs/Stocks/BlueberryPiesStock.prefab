@@ -656,6 +656,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 303418122980552662}
     m_Modifications:
+    - target: {fileID: 1253652408793350, guid: 8cbd0a9a7593f47c696b2e27706abed8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1305174719185346, guid: 8cbd0a9a7593f47c696b2e27706abed8, type: 3}
       propertyPath: m_Name
       value: StockVisual

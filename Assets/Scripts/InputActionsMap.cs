@@ -98,6 +98,15 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenRecipe"",
+                    ""type"": ""Button"",
+                    ""id"": ""ad853c85-8c27-4156-b428-7d3ff2afd953"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -232,6 +241,17 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
                     ""action"": ""Throw"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""87b4f6d2-e735-411e-ad6d-0ede6baa5aa9"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenRecipe"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -248,6 +268,7 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
         m_Player_Primary = m_Player.FindAction("Primary", throwIfNotFound: true);
         m_Player_InteractAlternative = m_Player.FindAction("InteractAlternative", throwIfNotFound: true);
         m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
+        m_Player_OpenRecipe = m_Player.FindAction("OpenRecipe", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -317,6 +338,7 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Primary;
     private readonly InputAction m_Player_InteractAlternative;
     private readonly InputAction m_Player_Throw;
+    private readonly InputAction m_Player_OpenRecipe;
     public struct PlayerActions
     {
         private @InputActionsMap m_Wrapper;
@@ -329,6 +351,7 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
         public InputAction @Primary => m_Wrapper.m_Player_Primary;
         public InputAction @InteractAlternative => m_Wrapper.m_Player_InteractAlternative;
         public InputAction @Throw => m_Wrapper.m_Player_Throw;
+        public InputAction @OpenRecipe => m_Wrapper.m_Player_OpenRecipe;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -362,6 +385,9 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
             @Throw.started += instance.OnThrow;
             @Throw.performed += instance.OnThrow;
             @Throw.canceled += instance.OnThrow;
+            @OpenRecipe.started += instance.OnOpenRecipe;
+            @OpenRecipe.performed += instance.OnOpenRecipe;
+            @OpenRecipe.canceled += instance.OnOpenRecipe;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -390,6 +416,9 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
             @Throw.started -= instance.OnThrow;
             @Throw.performed -= instance.OnThrow;
             @Throw.canceled -= instance.OnThrow;
+            @OpenRecipe.started -= instance.OnOpenRecipe;
+            @OpenRecipe.performed -= instance.OnOpenRecipe;
+            @OpenRecipe.canceled -= instance.OnOpenRecipe;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -417,5 +446,6 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
         void OnPrimary(InputAction.CallbackContext context);
         void OnInteractAlternative(InputAction.CallbackContext context);
         void OnThrow(InputAction.CallbackContext context);
+        void OnOpenRecipe(InputAction.CallbackContext context);
     }
 }

@@ -17,3 +17,4 @@ MonoBehaviour:
   description: Contains like 10 pieces of cookie
   prefab: {fileID: 4080294292633153750, guid: b48979ea5adb1f54ea274235ffa80a52, type: 3}
   price: 40
+  icon: {fileID: 2800000, guid: 9c7cfc5438bd63044b729d5dfd2cd59d, type: 3}

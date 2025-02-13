@@ -85,6 +85,15 @@ public class TimeManager : MonoBehaviour
     private void ChangeTimeOfDay(TimeOfDay timeOfDay)
     {
         currentTimeOfDay = timeOfDay;
+        if( currentTimeOfDay == TimeOfDay.Day )
+        {
+            ShopManager.Instance.SetStoreActive(false);
+        }
+        else
+        {
+            ShopManager.Instance.SetStoreActive(true);
+        }
+        
         UpdateLightning();
     }
 

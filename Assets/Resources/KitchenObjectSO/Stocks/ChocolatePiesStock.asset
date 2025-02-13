@@ -17,3 +17,4 @@ MonoBehaviour:
   description: Contains like 10 pieces of chocopies
   prefab: {fileID: 4080294292633153750, guid: 36facab92f0ef1147898ff5a0b5a8744, type: 3}
   price: 70
+  icon: {fileID: 2800000, guid: 6930f3bcd0d979b488d8b897207e343b, type: 3}

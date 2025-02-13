@@ -17,3 +17,4 @@ MonoBehaviour:
   description: Blueberry goes squishy squishy
   prefab: {fileID: 934107910519511818, guid: c74f4617d1b9c7b41a92eeb6829e07b0, type: 3}
   price: 3
+  icon: {fileID: 2800000, guid: 72a40a31431516044b66cbf3309334d9, type: 3}

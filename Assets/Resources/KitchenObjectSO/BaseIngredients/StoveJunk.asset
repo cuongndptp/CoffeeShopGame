@@ -17,3 +17,4 @@ MonoBehaviour:
   description: A mixture of ewwwwwww
   prefab: {fileID: 4530352402861964792, guid: 032a63828b8df9b409cd521178aa4c5e, type: 3}
   price: 0
+  icon: {fileID: 2800000, guid: 44de1d525eb741044ae2225b66d8b2bb, type: 3}

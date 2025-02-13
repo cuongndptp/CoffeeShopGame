@@ -9,6 +9,7 @@ public class ShopManager : MonoBehaviour
 
     
     [SerializeField] private List<KitchenObjectSO> availableObjects;
+    [SerializeField] private Transform storeTransform;
 
     private void Awake()
     {
@@ -32,4 +33,8 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    public void SetStoreActive(bool isActivated)
+    {
+        storeTransform.gameObject.SetActive(isActivated);
+    }
 }

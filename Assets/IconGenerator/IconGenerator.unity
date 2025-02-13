@@ -679,8 +679,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets:
-  - name: CupOfCoffee_icon
-    obj: {fileID: 4432387235523803382, guid: 996a5f74a8336d9448760f6e04edd19d, type: 3}
+  - name: StrawberryPiesStock_icon
+    obj: {fileID: 5902564314538628682, guid: 8881cf0e05cf2ca408190933d57550e4, type: 3}
   overlays: []
   customFolder: Icons
   icon: {fileID: 0}

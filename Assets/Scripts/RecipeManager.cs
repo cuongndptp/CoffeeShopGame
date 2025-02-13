@@ -31,6 +31,7 @@ public class RecipeManager : MonoBehaviour
     }
 
     public List<IngredientRecipeSO> GetAllIngredientRecipeSOs() { return allIngredientRecipe; }
+    public List<IngredientRecipeSO> GetMixerRecipeSOs() {  return mixerRecipes; }
     public List<IngredientRecipeSO> GetStoveRecipes() { return stoveRecipes; }
     public KitchenObjectSO GetStoveJunkSO()
     {

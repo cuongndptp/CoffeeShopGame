@@ -17,3 +17,4 @@ MonoBehaviour:
   description: Contains like 10 pieces of strawberry  pies
   prefab: {fileID: 4080294292633153750, guid: 8881cf0e05cf2ca408190933d57550e4, type: 3}
   price: 70
+  icon: {fileID: 2800000, guid: da5fc2e314b67494290707543dbaa511, type: 3}

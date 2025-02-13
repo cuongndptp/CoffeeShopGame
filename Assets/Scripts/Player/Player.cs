@@ -85,7 +85,9 @@ public class Player : MonoBehaviour
         gameInput.OnPlayerPrimary += GameInput_OnPlayerPrimary;
         gameInput.OnPlayerInteractAlternative += GameInput_OnPlayerInteractAlternative;
         gameInput.OnPlayerThrow += GameInput_OnPlayerThrow;
+        gameInput.OnPlayerOpenRecipe += GameInput_OnPlayerOpenRecipe;
     }
+
 
     public void UnsubscribeFromGameInput()
     {
@@ -286,6 +288,12 @@ public class Player : MonoBehaviour
         HandleMovement();
     }
 
+
+
+    private void GameInput_OnPlayerOpenRecipe(object sender, EventArgs e)
+    {
+        RecipeUI.Instance.OpenCloseShop();
+    }
     private void HandleMovement()
     {
         Vector3 moveDirection = new Vector3(inputVector.x, 0f, inputVector.y);
