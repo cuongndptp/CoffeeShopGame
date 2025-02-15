@@ -56,7 +56,7 @@ public abstract class KitchenObject : MonoBehaviour
         }
     }
 
-    public void PlayerPickUp(Player player)
+    public virtual void PlayerPickUp(Player player)
     {
         player.SetKitchenObject(this);
         HoldTo(player.GetInteractPoint());

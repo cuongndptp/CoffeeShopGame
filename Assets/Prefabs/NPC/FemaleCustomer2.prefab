@@ -720,6 +720,7 @@ MonoBehaviour:
   state: 0
   TimeToGetOrder: 15
   leavingPoint: {fileID: 0}
+  dishImageUI: {fileID: 772586888890234461}
 --- !u!195 &8650704158461988404
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -730,7 +731,7 @@ NavMeshAgent:
   m_Enabled: 0
   m_AgentTypeID: -1372625422
   m_Radius: 0.5
-  m_Speed: 1.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

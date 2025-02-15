@@ -24,9 +24,11 @@ public class CustomerAI : MonoBehaviour
 
     private float orderGetTimeRate = 0f;
     private float orderServeTimeRate = 0f;
-
+    
     [SerializeField]
     private Transform leavingPoint;
+    [SerializeField]
+    private DishImages dishImageUI;
 
     public event EventHandler<OnStateChangedEventArgs> OnStateChanged;
     public class OnStateChangedEventArgs: EventArgs
@@ -34,8 +36,8 @@ public class CustomerAI : MonoBehaviour
         public AIState state;
     }
 
-    public event EventHandler<OnOrderReceivedEventArgs> OnOrderReceived;
-    public class OnOrderReceivedEventArgs : EventArgs
+    public event EventHandler<OnDishListChangedEventArgs> OnDishListChanged;
+    public class OnDishListChangedEventArgs : EventArgs
     {
         public List<DishSO> dishSOs;
     }
@@ -46,6 +48,8 @@ public class CustomerAI : MonoBehaviour
     {
         public float progress;
     }
+
+    public event EventHandler OnStartLeaving;
 
     public enum AIState
     {
@@ -182,6 +186,9 @@ public class CustomerAI : MonoBehaviour
         transform.localScale = Vector3.one;
         currentDeliveryZone = targetSeatPoint.GetDeliveryZone();
         currentDeliveryZone.OnOrderDelivered += CurrentDeliveryZone_OnOrderDelivered;
+        dishImageUI.SetDeliveryZone(currentDeliveryZone);
+
+
     }
 
     //Deliveried
@@ -231,7 +238,7 @@ public class CustomerAI : MonoBehaviour
             //Subcribe to ServeTimerRunOut event
             order.OnServeTimerRunOut += Order_OnServeTimerRunOut;
 
-            OnOrderReceived?.Invoke(this, new OnOrderReceivedEventArgs
+            OnDishListChanged?.Invoke(this, new OnDishListChangedEventArgs
             {
                 dishSOs = order.GetDishSOList(),
             });
@@ -328,12 +335,7 @@ public class CustomerAI : MonoBehaviour
 
     private void GetOutOfSeat()
     {
-        
-
-
         transform.SetParent(targetSeatZone.transform);
-
-
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
         transform.localScale = Vector3.one;
@@ -350,8 +352,8 @@ public class CustomerAI : MonoBehaviour
         agent.enabled = true;
         agent.isStopped = false;
         //CleanDishesUIImages();
-
-        if(currentDeliveryZone != null)
+        OnStartLeaving?.Invoke(this, EventArgs.Empty);
+        if (currentDeliveryZone != null)
         {
             currentDeliveryZone.ClearAllList();
         }
@@ -363,14 +365,6 @@ public class CustomerAI : MonoBehaviour
     }
 
 
-    private void CleanDishesUIImages()
-    {
-        //Hide the UI for the dishes display images
-        OnOrderReceived?.Invoke(this, new OnOrderReceivedEventArgs
-        {
-            dishSOs = null
-        });
-    }
 
     public void Leave()
     {

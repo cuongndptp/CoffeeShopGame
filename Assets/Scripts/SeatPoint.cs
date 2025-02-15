@@ -61,7 +61,7 @@ public class SeatPoint : MonoBehaviour
         this.servingCustomer = servingCustomer;
         if(servingCustomer != null)
         {
-            servingCustomer.OnOrderReceived += ServingCustomer_OnOrderReceived;
+            servingCustomer.OnDishListChanged += ServingCustomer_OnOrderReceived;
         }
     }
 

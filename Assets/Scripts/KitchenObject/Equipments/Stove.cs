@@ -1,9 +1,10 @@
+using Assets.Scripts.Interfaces;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stove : MonoBehaviour
+public class Stove : MonoBehaviour, IDisplayableIngredientUI
 {
     private enum StoveState
     {
@@ -32,6 +33,17 @@ public class Stove : MonoBehaviour
         public float progress;
     }
 
+    //UI
+    [SerializeField] private Transform ingredientImageUITransform;
+
+    public Transform IngredientImageUITransform
+    {
+        get => ingredientImageUITransform;
+        set => ingredientImageUITransform = value;
+    }
+    private IngredientImageUI ingredientImageUI;
+
+
     private void Start()
     {
         stoveRecipes = RecipeManager.Instance.GetStoveRecipes();
@@ -41,6 +53,7 @@ public class Stove : MonoBehaviour
         {
             progress = 0f
         });
+        ingredientImageUI = ingredientImageUITransform.GetComponent<IngredientImageUI>();  
     }
 
     public void Interact(Player player) // Player presses E
@@ -58,8 +71,6 @@ public class Stove : MonoBehaviour
 
             if (playerKitchenObjectSO.type == KitchenObjectSO.Type.BaseIngredient || playerKitchenObjectSO.type == KitchenObjectSO.Type.Ingredient)
             {
-                Debug.Log("Adding ingredient to stove");
-
                 bool ingredientFound = false;
                 foreach (var ingredient in currentIngredients)
                 {
@@ -67,6 +78,7 @@ public class Stove : MonoBehaviour
                     {
                         ingredient.quantity += 1; // Increase quantity if already exists
                         ingredientFound = true;
+                        ingredientImageUI.UpdateRecipeIngredientListUI(currentIngredients);
                         break;
                     }
                 }
@@ -74,6 +86,7 @@ public class Stove : MonoBehaviour
                 if (!ingredientFound)
                 {
                     currentIngredients.Add(new RecipeIngredient { inputKitchenObject = playerKitchenObjectSO, quantity = 1 });
+                    ingredientImageUI.UpdateRecipeIngredientListUI(currentIngredients);
                 }
 
                 playerKitchenObject.Release(player);
@@ -229,9 +242,15 @@ public class Stove : MonoBehaviour
             matchedKitchenObjectSO = null;
             state = StoveState.WaitingForIngredients;
             currentIngredients.Clear();
+            ingredientImageUI.UpdateRecipeIngredientListUI(currentIngredients);
             isOn = false;
             Debug.Log("Dish collected!");
         }
     }
 
+    public void ClearStove()
+    {
+        currentIngredients.Clear();
+        ingredientImageUI.UpdateRecipeIngredientListUI(currentIngredients);
+    }
 }

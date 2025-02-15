@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5382183608793126251}
   - component: {fileID: 4361609859536370862}
   - component: {fileID: 3939342990458740775}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GreenTruck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

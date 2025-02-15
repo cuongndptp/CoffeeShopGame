@@ -1,16 +1,27 @@
+using Assets.Scripts.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mixer : Equipment
+public class Mixer : Equipment, IDisplayableIngredientUI
 {
 
     private List<KitchenObjectSO> baseIngredients;
 
+    //UI
+    [SerializeField] private Transform ingredientImageUITransform;
+
+    public Transform IngredientImageUITransform
+    {
+        get => ingredientImageUITransform;
+        set => ingredientImageUITransform = value;
+    }
+    private IngredientImageUI ingredientImageUI;
+
     private void Start()
     {
         baseIngredients = new List<KitchenObjectSO>();
-        
+        ingredientImageUI = IngredientImageUITransform.GetComponent<IngredientImageUI>();
     }
 
     public override void Interact(Player player)
@@ -22,6 +33,7 @@ public class Mixer : Equipment
             if (kitchenObjectSO.type == KitchenObjectSO.Type.BaseIngredient)
             {
                 baseIngredients.Add(kitchenObjectSO);
+                UpdateIngredientUI();
                 player.GetKitchenObject().DestroySelf();
             }
         }
@@ -42,5 +54,11 @@ public class Mixer : Equipment
     public void ClearIngredients()
     {
         baseIngredients?.Clear();
+        UpdateIngredientUI();
+    }
+
+    public void UpdateIngredientUI()
+    {
+        ingredientImageUI.UpdateRecipeIngredientListUI(RecipeManager.InitRecipeIngredients(baseIngredients));
     }
 }

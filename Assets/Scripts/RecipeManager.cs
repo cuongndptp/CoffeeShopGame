@@ -25,6 +25,22 @@ public class RecipeManager : MonoBehaviour
         }
     }
 
+    public static List<RecipeIngredient> InitRecipeIngredients(List<KitchenObjectSO> kitchenObjects)
+    {
+        List<RecipeIngredient> recipeIngredients = new List<RecipeIngredient>();
+
+        foreach (KitchenObjectSO kitchenObject in kitchenObjects)
+        {
+            recipeIngredients.Add(new RecipeIngredient
+            {
+                inputKitchenObject = kitchenObject,
+                quantity = 1 // Default quantity; adjust as needed.
+            });
+        }
+
+        return recipeIngredients;
+    }
+
     public List<RecipeSO> GetAllRecipes()
     {
         return allDishRecipe;

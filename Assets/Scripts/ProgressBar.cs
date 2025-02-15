@@ -13,6 +13,12 @@ public class ProgressBar : MonoBehaviour
         gameObject.SetActive(false);
         slider.value = 0f;
         customerAI.OnProgressChanged += CustomerAI_OnProgressChanged;
+        customerAI.OnStartLeaving += CustomerAI_OnStartLeaving;
+    }
+
+    private void CustomerAI_OnStartLeaving(object sender, System.EventArgs e)
+    {
+        customerAI.OnProgressChanged -= CustomerAI_OnProgressChanged;
     }
 
     private void CustomerAI_OnProgressChanged(object sender, CustomerAI.OnProgressChangedEventArgs e)
@@ -26,6 +32,7 @@ public class ProgressBar : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-
     }
+
+
 }

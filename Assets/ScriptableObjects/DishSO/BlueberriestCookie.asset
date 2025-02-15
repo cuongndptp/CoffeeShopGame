@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b070a3733d9ea74caada51ae142045f, type: 3}
   m_Name: BlueberriestCookie
   m_EditorClassIdentifier: 
-  serveTime: 120
+  serveTime: 40
   dishName: Blueberriest Cookie
-  eatingTime: 15
-  price: 20
+  eatingTime: 10
+  price: 45
   prefab: {fileID: 1011787261335839510, guid: 812134641f654bc44b7d0b03da99cb85, type: 3}
   recipe: {fileID: 11400000, guid: d9fccd24887319a44824864ee6d6f176, type: 2}
   icon: {fileID: 2800000, guid: c9ed8598b1dabeb4b8d13441f1578261, type: 3}

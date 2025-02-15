@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class Player : MonoBehaviour
 {
@@ -23,7 +24,9 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform interactPoint;
     //Move
     [SerializeField] private float moveSpeed = 5f;
-
+    [SerializeField] private float maxSpeed = 5f;
+    [SerializeField] private float movingDrag;
+    [SerializeField] private float standingDrag;
     //Look
     [SerializeField] private float sensitivity = 2f;
     [SerializeField] private Vector3 offset; // Adjust offset as needed
@@ -31,9 +34,11 @@ public class Player : MonoBehaviour
     //Jump
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private Transform groundCheck;
-    [SerializeField] private Transform groundLayer;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private float groundCheckRadius;
     //Interact
     [SerializeField] private float interactRange = 5f;
+
 
     private KitchenObject kitchenObject;
 
@@ -114,9 +119,10 @@ public class Player : MonoBehaviour
 
     private void GameInput_OnPlayerInteractAlternative(object sender, EventArgs e)
     {
-        if (kitchenObject == null)
+
+        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit hitInfo, interactRange))
         {
-            if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit hitInfo, interactRange))
+            if (kitchenObject == null)
             {
                 if (hitInfo.transform.TryGetComponent<Holder>(out Holder holder))
                 {
@@ -125,29 +131,29 @@ public class Player : MonoBehaviour
 
                 if (hitInfo.transform.TryGetComponent<Ingredient>(out Ingredient ingredient))
                 {
-                    Holder holderOfIngredient = ingredient.GetHolder();
-                    if (holderOfIngredient != null)
+                    Holder targetHolder = ingredient.GetHolder();
+                    if (targetHolder != null)
                     {
-                        holderOfIngredient.TryArrangeDish(out Transform dish);
+                        targetHolder.TryArrangeDish(out Transform dish);
                     }
                 }
 
-
-                if (hitInfo.transform.TryGetComponent<Stock>(out Stock stock))
-                {
-                    stock.InteractAlternative(this);
-                }
-
-                if(hitInfo.transform.TryGetComponent<Mixer>(out Mixer mixer))
+                if (hitInfo.transform.TryGetComponent<Mixer>(out Mixer mixer))
                 {
                     mixer.InteractAlternative(this);
                 }
-                if (hitInfo.transform.TryGetComponent<Stove>(out Stove stove))
-                {
-                    stove.InteractAlternative();
-                }
+
+            }
+            if (hitInfo.transform.TryGetComponent<Stock>(out Stock stock))
+            {
+                stock.InteractAlternative(this);
+            }
+            if (hitInfo.transform.TryGetComponent<Stove>(out Stove stove))
+            {
+                stove.InteractAlternative();
             }
         }
+
     }
 
     private void Start()
@@ -217,6 +223,20 @@ public class Player : MonoBehaviour
     {
         if (kitchenObject != null)
         { kitchenObject.Release(this); }
+        else
+        {
+            if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit hitInfo, interactRange))
+            {
+                if (hitInfo.transform.TryGetComponent(out Stove stove))
+                {
+                    stove.ClearStove();
+                }
+                if (hitInfo.transform.TryGetComponent(out Mixer mixer))
+                {
+                    mixer.ClearIngredients();
+                }
+            }
+        }
     }
 
     private void GameInput_OnPlayerInteract(object sender, System.EventArgs e)
@@ -241,7 +261,7 @@ public class Player : MonoBehaviour
                 customerAI.Interact(this);
                 if (hitInfo.transform == null) return;
             }
-            if (hitInfo.transform.TryGetComponent(out PlateShelves dishShelves))
+            if (hitInfo.transform.TryGetComponent(out SupplyShelf dishShelves))
             {
                 dishShelves.Interact(this);
                 if (hitInfo.transform == null) return;
@@ -272,9 +292,13 @@ public class Player : MonoBehaviour
             HandleLook();
         }
         //Debug.Log("Mode: " + mode);
-
+        DrawGroundCheckRay();
     }
-
+    private void DrawGroundCheckRay()
+    {
+        float rayDistance = 0.2f;
+        Debug.DrawRay(groundCheck.position, Vector3.down * rayDistance, Color.yellow);
+    }
     private void LateUpdate()
     {
         Vector3 viewportPosition = Vector3.zero;
@@ -299,8 +323,24 @@ public class Player : MonoBehaviour
         Vector3 moveDirection = new Vector3(inputVector.x, 0f, inputVector.y);
         moveDirection = transform.TransformDirection(moveDirection); // Make movement relative to the player
 
-        rb.AddForce(moveDirection * moveSpeed, ForceMode.Force);
+        if (moveDirection.magnitude > 0.1f || !IsGrounded())
+        {
+            rb.AddForce(moveDirection * moveSpeed, ForceMode.Force);
+            rb.drag = movingDrag; // No resistance when moving
+        }
+        else if(moveDirection.magnitude <= 0.1f && IsGrounded())
+        {
+            rb.drag = standingDrag; // High drag to quickly stop sliding
+        }
+
+        // Clamp the player's velocity to prevent excessive sliding
+        Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        if (horizontalVelocity.magnitude > maxSpeed)
+        {
+            rb.velocity = horizontalVelocity.normalized * maxSpeed + Vector3.up * rb.velocity.y;
+        }
     }
+
 
     private void HandleLook()
     {
@@ -321,13 +361,21 @@ public class Player : MonoBehaviour
             return;
         }
 
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        if (IsGrounded()) // Only jump if the player is on the ground
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }
 
+    private bool IsGrounded()
+    {
+        bool isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
+        return isGrounded;
     }
 
     public bool TryReleaseObject()
     {
-        if(kitchenObject != null)
+        if (kitchenObject != null)
         {
             kitchenObject.Release(this);
             return true;

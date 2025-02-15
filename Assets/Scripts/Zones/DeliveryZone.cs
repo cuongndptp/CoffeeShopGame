@@ -11,7 +11,11 @@ public class DeliveryZone : MonoBehaviour
     private List<DishSO> deliveredDishSOList;
 
     public event EventHandler<OnOrderDeliveredEventArgs> OnOrderDelivered;
-    public event EventHandler OnOrderAdded;
+    public event EventHandler<OnOrderAddedEventArgs> OnOrderAdded;
+    public class OnOrderAddedEventArgs: EventArgs
+    {
+        public List<DishSO> dishSOs;
+    }
     public class OnOrderDeliveredEventArgs : EventArgs
     {
         public bool success;
@@ -33,7 +37,7 @@ public class DeliveryZone : MonoBehaviour
 
 
 
-    //This is called when player put the dish on delveryzone
+    //This is called when player put the dish on deliveryzone
     public void TryAddOrder(Dish deliveredDish)
     {
         if (orderDishSOs == null || remainingDishSOs == null || deliveredDishSOList == null)
@@ -50,7 +54,10 @@ public class DeliveryZone : MonoBehaviour
             {
                 deliveredDishSOList.Add(deliveredDishSO);
                 remainingDishSOs.Remove(deliveredDishSO);
-                OnOrderAdded?.Invoke(this, EventArgs.Empty);
+                OnOrderAdded?.Invoke(this, new OnOrderAddedEventArgs
+                {
+                    dishSOs = remainingDishSOs
+                });
             }
             else
             {

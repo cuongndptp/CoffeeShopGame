@@ -402,7 +402,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.522}
+  m_AnchoredPosition: {x: 0, y: 2.9}
   m_SizeDelta: {x: 1.5, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3668484833264357431
@@ -519,7 +519,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.921}
+  m_AnchoredPosition: {x: 0, y: 3.174}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &452975765940479749
@@ -720,6 +720,7 @@ MonoBehaviour:
   state: 0
   TimeToGetOrder: 15
   leavingPoint: {fileID: 0}
+  dishImageUI: {fileID: 452975765940479749}
 --- !u!195 &8650704158461988404
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -730,7 +731,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

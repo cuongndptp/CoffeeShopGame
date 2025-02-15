@@ -25,15 +25,15 @@ public class Stock : KitchenObject
 
     public override void Interact(Player player)
     {
-        //If player is not holding anything -> pick it up
-        if (!isOpened)
+        //If not opened
+        if (!isOpened) 
         {
             if(player.GetKitchenObject() == null)
             {
                 PlayerPickUp(player);
             }
         }
-        else
+        else // If opened
         {
             if(player.GetKitchenObject() == null)
             {
@@ -43,6 +43,13 @@ public class Stock : KitchenObject
                 KitchenObject kitchenObject = newIngredientTransform.GetComponent<KitchenObject>();
                 kitchenObject.PlayerPickUp(player);
                 OnKitchenObjectTaken?.Invoke(this, EventArgs.Empty);
+            }else if(player.GetKitchenObject() is Holder)
+            {
+                Holder playerHolder = player.GetKitchenObject() as Holder;
+                Transform newIngredientTransform = Instantiate(kitchenObjectPrefab);
+                if(newIngredientTransform.TryGetComponent<Ingredient>(out Ingredient ingredient)){
+                    playerHolder.TryAddIngredient(ingredient);
+                }
             }
 
         }

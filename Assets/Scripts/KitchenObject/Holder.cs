@@ -205,5 +205,11 @@ public class Holder : KitchenObject
             this.ingredient = null;
         }
     }
+
+    public override void PlayerPickUp(Player player)
+    {
+        base.PlayerPickUp(player);
+        player.SetMode(Player.Mode.Put);
+    }
 }
 

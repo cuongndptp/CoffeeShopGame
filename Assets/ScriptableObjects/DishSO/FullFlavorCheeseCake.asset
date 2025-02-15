@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b070a3733d9ea74caada51ae142045f, type: 3}
   m_Name: FullFlavorCheeseCake
   m_EditorClassIdentifier: 
-  serveTime: 30
+  serveTime: 40
   dishName: Full Flavor Cheese Cake
-  eatingTime: 30
-  price: 40
+  eatingTime: 10
+  price: 50
   prefab: {fileID: 1011787261335839510, guid: aad69ee721802a049bbffc0d3e5f8127, type: 3}
   recipe: {fileID: 11400000, guid: ece47d17a89e3874b80668335888bea9, type: 2}
   icon: {fileID: 2800000, guid: 64b07e90ecff6dc48865e66b50358736, type: 3}
