@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.57520235, g: 0.56611425, b: 0.5594073, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: c725a7fb9c8690f439f9638d5146f59d,
+    type: 2}
   m_LightingSettings: {fileID: 1835234019}
 --- !u!196 &4
 NavMeshSettings:
@@ -3223,6 +3224,7 @@ MonoBehaviour:
   allDishSOList:
   - {fileID: 11400000, guid: e6393a443beb8784cbae93c3966faccf, type: 2}
   - {fileID: 11400000, guid: a1666b91bae9bcd459bec02791e7760b, type: 2}
+  - {fileID: 11400000, guid: 7b6130ccda2e2ef40b66cefbe37168fc, type: 2}
 --- !u!1001 &291888695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13852,7 +13854,7 @@ MonoBehaviour:
   daySkybox: {fileID: 2100000, guid: 85cf0b004bc4a654b9e501efcce47902, type: 2}
   eveningSkybox: {fileID: 2100000, guid: 2039a0ad0a9d05549928b70362f54902, type: 2}
   directionalLight: {fileID: 1976026141}
-  dayLength: 180
+  dayLength: 300
 --- !u!1 &1050471061
 GameObject:
   m_ObjectHideFlags: 0
@@ -14732,6 +14734,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3666518873368202849, guid: d2ab01a76c474de46b3d1c081a8d4542,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3669217992526871330, guid: d2ab01a76c474de46b3d1c081a8d4542,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -14786,6 +14793,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 184.99031
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823362824268033139, guid: d2ab01a76c474de46b3d1c081a8d4542,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823362824268033139, guid: d2ab01a76c474de46b3d1c081a8d4542,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4867196811341446168, guid: d2ab01a76c474de46b3d1c081a8d4542,
         type: 3}
@@ -14887,6 +14904,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5113059216304606660, guid: d2ab01a76c474de46b3d1c081a8d4542,
+        type: 3}
+      propertyPath: gameInput
+      value: 
+      objectReference: {fileID: 2099423398}
     - target: {fileID: 6423229105786212019, guid: d2ab01a76c474de46b3d1c081a8d4542,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -77661,6 +77683,7 @@ MonoBehaviour:
   allDishRecipe:
   - {fileID: 11400000, guid: ece47d17a89e3874b80668335888bea9, type: 2}
   - {fileID: 11400000, guid: d9fccd24887319a44824864ee6d6f176, type: 2}
+  - {fileID: 11400000, guid: 72d49c1eb6611db4581c8d19fa947d37, type: 2}
   allIngredientRecipe:
   - {fileID: 11400000, guid: 79f253a47c76ede48bd92b9b108c4532, type: 2}
   - {fileID: 11400000, guid: 2abe0e771b3395a4cb46ffd1ee1d41c2, type: 2}

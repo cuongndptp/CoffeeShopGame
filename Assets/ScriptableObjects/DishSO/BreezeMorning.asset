@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b070a3733d9ea74caada51ae142045f, type: 3}
+  m_Name: BreezeMorning
+  m_EditorClassIdentifier: 
+  serveTime: 40
+  dishName: Breeze Morning
+  eatingTime: 10
+  price: 50
+  prefab: {fileID: 1011787261335839510, guid: 82d13a9a59d23b849831a85fd85440d1, type: 3}
+  recipe: {fileID: 11400000, guid: 72d49c1eb6611db4581c8d19fa947d37, type: 2}
+  icon: {fileID: 2800000, guid: 5ce8af37adca6bc40a297c58c3f48b56, type: 3}

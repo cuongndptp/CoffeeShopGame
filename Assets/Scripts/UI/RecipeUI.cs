@@ -40,7 +40,7 @@ public class RecipeUI : MonoBehaviour
         OpenDish();
     }
 
-    public void OpenCloseShop()
+    public void OpenCloseRecipeBook()
     {
         if (!isOpened)
         {

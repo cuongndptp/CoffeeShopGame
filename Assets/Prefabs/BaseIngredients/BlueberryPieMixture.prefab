@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 73505348856042660}
   - component: {fileID: 2546997524840814337}
   m_Layer: 0
-  m_Name: BlueberryPieMixtureBowl
+  m_Name: BlueberryPieMixture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

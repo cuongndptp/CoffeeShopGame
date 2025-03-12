@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class Player : MonoBehaviour
 {
@@ -316,7 +315,7 @@ public class Player : MonoBehaviour
 
     private void GameInput_OnPlayerOpenRecipe(object sender, EventArgs e)
     {
-        RecipeUI.Instance.OpenCloseShop();
+        RecipeUI.Instance.OpenCloseRecipeBook();
     }
     private void HandleMovement()
     {

@@ -24,9 +24,10 @@ public class GameSaveManager : MonoBehaviour
 
     public void SaveGame()
     {
+        Debug.Log("Starting SaveGame process...");
         List<ObjectData> objectDataList = new List<ObjectData>();
 
-        Debug.Log("Starting SaveGame process...");
+        
 
         // Save KitchenObjects
         KitchenObject[] kitchenObjects = FindObjectsOfType<KitchenObject>();
@@ -202,13 +203,26 @@ public class GameSaveManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("✅ Existing Player found! Updating position...");
+                    Debug.Log("Existing Player found! Updating position...");
                     player.LoadData(data);
                 }
             }
         }
 
         Debug.Log("Game Loaded Successfully!");
+    }
+
+    public void DeleteSave()
+    {
+        if (File.Exists(saveFilePath))
+        {
+            File.Delete(saveFilePath);
+            Debug.Log("Save file deleted successfully!");
+        }
+        else
+        {
+            Debug.LogWarning("No save file found to delete!");
+        }
     }
 }
 

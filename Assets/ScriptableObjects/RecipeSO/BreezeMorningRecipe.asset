@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89d0a6065e6771b49b0d29ecaf975476, type: 3}
-  m_Name: BlueberryCheesecake1_StrawberryCheesecake1_ChocolatteCheesecake1_LimeCheesecake1
+  m_Name: BreezeMorningRecipe
   m_EditorClassIdentifier: 
   recipeIngredients:
   - inputKitchenObject: {fileID: 11400000, guid: 65d319d4c2cfeb24292b5c332bde179e,
       type: 2}
     quantity: 1
-  - inputKitchenObject: {fileID: 11400000, guid: 3ad6b10be601d1743b6a0fd443dbcbeb,
-      type: 2}
-    quantity: 1
   - inputKitchenObject: {fileID: 11400000, guid: 25ecc74a8645ecd419cdba3559c5d9c4,
       type: 2}
     quantity: 1
-  - inputKitchenObject: {fileID: 11400000, guid: 1bdc7135aba7f054f8611e90e07c798e,
+  - inputKitchenObject: {fileID: 11400000, guid: 43f79060975b1db41a543f4e7ef95913,
+      type: 2}
+    quantity: 1
+  - inputKitchenObject: {fileID: 11400000, guid: d3ad2b289022b2e48b4278c0616ccce0,
       type: 2}
     quantity: 1
   processTime: 0
-  outputDish: {fileID: 11400000, guid: a1666b91bae9bcd459bec02791e7760b, type: 2}
+  outputDish: {fileID: 11400000, guid: 7b6130ccda2e2ef40b66cefbe37168fc, type: 2}

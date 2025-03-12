@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,11 +21,28 @@ public class TimeManager : MonoBehaviour
     private int dayCount = 0;
     //Singleton
     public static TimeManager Instance;
+    public event EventHandler<OnTimerCountingEventArgs> OnTimerCounting;
+    public class OnTimerCountingEventArgs : EventArgs
+    {
+        public float dayTimeNormalized;
+    }
+
+    public event EventHandler<OnTimeOfDayChangedEventArgs> OnTimeOfDayChanged;
+    public class OnTimeOfDayChangedEventArgs : EventArgs
+    {
+        public TimeOfDay timeOfDay;
+    }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
+        
         ChangeTimeOfDay(TimeOfDay.Day);
         dayTimer = dayLength;
-        Instance = this;
+        
     }
 
     private void Update()
@@ -44,7 +62,11 @@ public class TimeManager : MonoBehaviour
     private void ManageDayTime()
     {
         dayTimer -= Time.deltaTime;
-        if(dayTimer <= 0f )
+        OnTimerCounting?.Invoke(this, new OnTimerCountingEventArgs
+        {
+            dayTimeNormalized = dayTimer / dayLength,
+        });
+        if (dayTimer <= 0f )
         {
             ChangeTimeOfDay(TimeOfDay.Evening);
         }
@@ -85,7 +107,8 @@ public class TimeManager : MonoBehaviour
     private void ChangeTimeOfDay(TimeOfDay timeOfDay)
     {
         currentTimeOfDay = timeOfDay;
-        if( currentTimeOfDay == TimeOfDay.Day )
+        OnTimeOfDayChanged?.Invoke(this, new OnTimeOfDayChangedEventArgs { timeOfDay = currentTimeOfDay });
+        if ( currentTimeOfDay == TimeOfDay.Day )
         {
             ShopManager.Instance.SetStoreActive(false);
         }
@@ -118,5 +141,20 @@ public class TimeManager : MonoBehaviour
 
         // Rotate skybox material for a dynamic effect
         RenderSettings.skybox.SetFloat("_Rotation", Mathf.Lerp(0f, 360f, dayProgress));
+    }
+
+    public static void Pause()
+    {
+        GameInput.Instance.UnlockCursor();
+        Time.timeScale = 0f;
+        Player.Instance.SetFreezedLook(true);
+    }
+
+    public  static void StopPause()
+    {
+        GameInput.Instance.LockCursor();
+        Time.timeScale = 1f;
+        Player.Instance.SetFreezedLook(false);
+        
     }
 }

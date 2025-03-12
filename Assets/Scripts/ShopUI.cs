@@ -21,17 +21,13 @@ public class ShopUI : MonoBehaviour
     public void CloseShop()
     {
         transform.gameObject.SetActive(false); // Hide the Shop UI
-        GameInput.Instance.LockCursor(); // Lock and hide the cursor for gameplay
-        Time.timeScale = 1f; // Resume the game
-        Player.Instance.SetFreezedLook(false);
+        TimeManager.StopPause();
     }
 
     public void OpenShop()
     {
         transform.gameObject.SetActive(true);
-        GameInput.Instance.UnlockCursor();
-        Time.timeScale = 0f;
-        Player.Instance.SetFreezedLook(true);
+        TimeManager.Pause();
     }
 
     public void CreateItemButton(KitchenObjectSO kitchenObjectSO)

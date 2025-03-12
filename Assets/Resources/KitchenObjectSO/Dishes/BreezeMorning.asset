@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 138c46d6e3f7a8147b0858136645dfd0, type: 3}
+  m_Name: BreezeMorning
+  m_EditorClassIdentifier: 
+  type: 5
+  Name: Breeze Morning
+  description: A quick morning boost for a cozy day.
+  prefab: {fileID: 4713273935740045132, guid: 82d13a9a59d23b849831a85fd85440d1, type: 3}
+  price: 25
+  icon: {fileID: 2800000, guid: 5ce8af37adca6bc40a297c58c3f48b56, type: 3}

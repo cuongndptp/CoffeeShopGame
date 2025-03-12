@@ -14,12 +14,10 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnPlayerInteractAlternative;
     public event EventHandler OnPlayerThrow;
     public event EventHandler OnPlayerOpenRecipe;
+    public event EventHandler OnPause;
     //Singleton
     public static GameInput Instance;
-    private void Start()
-    {
-        Instance = this;
-    }
+    
 
     private void Awake()
     {
@@ -32,7 +30,14 @@ public class GameInput : MonoBehaviour
         inputActionsMap.Player.InteractAlternative.performed += InteractAlternative_performed;
         inputActionsMap.Player.Throw.performed += Throw_performed;
         inputActionsMap.Player.OpenRecipe.performed += OpenRecipe_performed;
+        inputActionsMap.Player.Pause.performed += Pause_performed;
         LockCursor();
+        Instance = this;
+    }
+
+    private void Pause_performed(InputAction.CallbackContext obj)
+    {
+        OnPause?.Invoke(this, EventArgs.Empty);
     }
 
     private void OpenRecipe_performed(InputAction.CallbackContext obj)

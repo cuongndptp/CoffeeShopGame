@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditor.FilePathAttribute;
 
 public class CustomerAI : MonoBehaviour
 {
@@ -335,18 +334,19 @@ public class CustomerAI : MonoBehaviour
 
     private void GetOutOfSeat()
     {
-        transform.SetParent(targetSeatZone.transform);
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
-        transform.localScale = Vector3.one;
-        transform.SetParent(null);
-        targetSeatPoint.SetAvailability(true);
+        if(targetSeatZone != null)
+        {
+            transform.SetParent(targetSeatZone.transform);
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+            transform.localScale = Vector3.one;
+            transform.SetParent(null);
+            targetSeatPoint.SetAvailability(true);
+        }
+        
         //targetSeatPoint.SetServingCustomer(null);
         //currentDeliveryZone.OnOrderDelivered -= CurrentDeliveryZone_OnOrderDelivered;
         //currentDeliveryZone = null;
-
-
-
         //targetSeatZone.OnServingCustomerArrived -= OnServingCustomerArrived;
         //targetSeatZone = null;
         agent.enabled = true;

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89d0a6065e6771b49b0d29ecaf975476, type: 3}
-  m_Name: BlueberryCheesecake3_Cookie1_BlueberriestCookie
+  m_Name: BlueberriesCookieRecipe
   m_EditorClassIdentifier: 
   recipeIngredients:
   - inputKitchenObject: {fileID: 11400000, guid: 65d319d4c2cfeb24292b5c332bde179e,

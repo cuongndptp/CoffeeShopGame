@@ -107,6 +107,15 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""503459d7-cd89-41e7-b6b0-65b373ee3adf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -252,6 +261,17 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
                     ""action"": ""OpenRecipe"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6505b0e2-ab93-4c0f-854f-95d02d069863"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -269,6 +289,7 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
         m_Player_InteractAlternative = m_Player.FindAction("InteractAlternative", throwIfNotFound: true);
         m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
         m_Player_OpenRecipe = m_Player.FindAction("OpenRecipe", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -339,6 +360,7 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_InteractAlternative;
     private readonly InputAction m_Player_Throw;
     private readonly InputAction m_Player_OpenRecipe;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @InputActionsMap m_Wrapper;
@@ -352,6 +374,7 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
         public InputAction @InteractAlternative => m_Wrapper.m_Player_InteractAlternative;
         public InputAction @Throw => m_Wrapper.m_Player_Throw;
         public InputAction @OpenRecipe => m_Wrapper.m_Player_OpenRecipe;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -388,6 +411,9 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
             @OpenRecipe.started += instance.OnOpenRecipe;
             @OpenRecipe.performed += instance.OnOpenRecipe;
             @OpenRecipe.canceled += instance.OnOpenRecipe;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -419,6 +445,9 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
             @OpenRecipe.started -= instance.OnOpenRecipe;
             @OpenRecipe.performed -= instance.OnOpenRecipe;
             @OpenRecipe.canceled -= instance.OnOpenRecipe;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -447,5 +476,6 @@ public partial class @InputActionsMap: IInputActionCollection2, IDisposable
         void OnInteractAlternative(InputAction.CallbackContext context);
         void OnThrow(InputAction.CallbackContext context);
         void OnOpenRecipe(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
